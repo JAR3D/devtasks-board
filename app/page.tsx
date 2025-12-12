@@ -1,66 +1,57 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
-export default function Home() {
+import Link from 'next/link';
+import styled from 'styled-components';
+
+const HomePage = () => {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <Main>
+      <Div>
+        <H1>Home</H1>
+        <P>
+          A simple full-stack task board built with Next.js, MongoDB and
+          TypeScript
+        </P>
+        <CustomLink href="/tasks">View Tasks</CustomLink>
+      </Div>
+    </Main>
   );
-}
+};
+
+export default HomePage;
+
+const Main = styled.main`
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Div = styled.div`
+  text-align: center;
+
+  & > * + * {
+    margin-top: 1rem;
+  }
+`;
+
+const H1 = styled.h1`
+  font-size: 1.875rem;
+  font-weight: 700;
+`;
+
+const P = styled.p`
+  color: #6b7280;
+`;
+
+const CustomLink = styled(Link)`
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: #2563eb;
+  color: #ffffff;
+  display: inline-block;
+
+  &:hover {
+    background-color: #1d4ed8;
+  }
+`;
