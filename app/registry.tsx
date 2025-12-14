@@ -17,7 +17,7 @@ const StyledComponentsRegistry = ({
     return <>{styles}</>;
   });
 
-  if (window) {
+  if (typeof window !== undefined) {
     return <>{children}</>;
   }
 
