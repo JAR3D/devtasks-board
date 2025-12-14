@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 
 const taskSchema = new mongoose.Schema(
   {
@@ -6,7 +6,7 @@ const taskSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    descrition: String,
+    description: String,
     status: {
       type: String,
       enum: ['BACKLOG', 'IN_PROGRESS', 'DONE'],
@@ -28,4 +28,6 @@ export type TTaskDocument = mongoose.InferSchemaType<typeof taskSchema> & {
   _id: string;
 };
 
-export const Task = mongoose.model<TTaskDocument>('Task', taskSchema);
+export const Task =
+  (mongoose.models.Task as Model<TTaskDocument>) ||
+  mongoose.model<TTaskDocument>('Task', taskSchema);

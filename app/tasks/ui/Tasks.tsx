@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import type { TStatus, TPriority } from '../page';
+import type { TStatus, TPriority } from './TasksClient';
 import type { TTaskDocument } from '@/lib/models/Task';
 
 interface ITasks {
@@ -26,8 +26,8 @@ const Tasks = ({ statusLabels, groupedByStatus, priorityLabels }: ITasks) => {
                   <Span>{priorityLabels[task.priority]}</Span>
                 </Header>
 
-                {task.descrition && (
-                  <PDescription>{task.descrition}</PDescription>
+                {task.description && (
+                  <PDescription>{task.description}</PDescription>
                 )}
 
                 {task.tags && task.tags.length > 0 && (

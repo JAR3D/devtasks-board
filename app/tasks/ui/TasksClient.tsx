@@ -41,7 +41,8 @@ const TasksClient = ({ tasks }: { tasks: TTaskDocument[] }) => {
         return false;
       }
 
-      const text = `${task.title} ${task.descrition ?? ''}`.toLocaleLowerCase();
+      const text =
+        `${task.title} ${task.description ?? ''}`.toLocaleLowerCase();
       if (search && !text.includes(search.toLocaleLowerCase())) {
         return false;
       }

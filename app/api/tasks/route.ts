@@ -18,7 +18,7 @@ export const POST = async (req: Request) => {
 
   const task = await Task.create({
     title: body.title,
-    descrition: body.descrition ?? '',
+    description: body.description ?? '',
     status: body.status ?? 'BACKLOG',
     priority: body.priority ?? 'MEDIUM',
     tags: body.tags ?? [],
