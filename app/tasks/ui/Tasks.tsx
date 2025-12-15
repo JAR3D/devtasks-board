@@ -33,7 +33,7 @@ const Tasks = ({
                   <DivArticleHeader>
                     <Span>{priorityLabels[task.priority]}</Span>
                     <Button onClick={() => onEdit(task)}>Edit</Button>
-                    <Button danger onClick={() => onDelete(task)}>
+                    <Button $danger onClick={() => onDelete(task)}>
                       Delete
                     </Button>
                   </DivArticleHeader>
@@ -135,11 +135,11 @@ const DivArticleHeader = styled.div`
   gap: 0.4rem;
 `;
 
-const Button = styled.button<{ danger?: boolean }>`
+const Button = styled.button<{ $danger?: boolean }>`
   border-radius: 0.4rem;
-  border: 1px solid ${({ danger }) => (danger ? '#ef4444' : '#334155')};
-  background: ${({ danger }) => (danger ? 'rgba(239,68,68,0.1)' : '#0f172a')};
-  color: ${({ danger }) => (danger ? '#fca5a5' : '#e2e8f0')};
+  border: 1px solid ${({ $danger }) => ($danger ? '#ef4444' : '#334155')};
+  background: ${({ $danger }) => ($danger ? 'rgba(239,68,68,0.1)' : '#0f172a')};
+  color: ${({ $danger }) => ($danger ? '#fca5a5' : '#e2e8f0')};
   padding: 0.25rem 0.45rem;
   font-size: 0.75rem;
   cursor: pointer;

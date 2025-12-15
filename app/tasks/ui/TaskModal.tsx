@@ -160,13 +160,13 @@ export default function TaskModal({
         <DivActions>
           <Button
             type="button"
-            variant="ghost"
+            $variant="ghost"
             onClick={onClose}
             disabled={saving}
           >
             Cancel
           </Button>
-          <Button type="submit" variant="primary" disabled={saving}>
+          <Button type="submit" $variant="primary" disabled={saving}>
             {saving ? 'Saving...' : mode === 'create' ? 'Create' : 'Save'}
           </Button>
         </DivActions>
@@ -244,13 +244,13 @@ const DivActions = styled.div`
   margin-top: 0.25rem;
 `;
 
-const Button = styled.button<{ variant?: 'primary' | 'ghost' }>`
+const Button = styled.button<{ $variant?: 'primary' | 'ghost' }>`
   border-radius: 0.5rem;
   border: 1px solid
-    ${({ variant }) => (variant === 'primary' ? '#10b981' : '#334155')};
-  background: ${({ variant }) =>
-    variant === 'primary' ? '#10b981' : '#0f172a'};
-  color: ${({ variant }) => (variant === 'primary' ? '#020617' : '#e2e8f0')};
+    ${({ $variant }) => ($variant === 'primary' ? '#10b981' : '#334155')};
+  background: ${({ $variant }) =>
+    $variant === 'primary' ? '#10b981' : '#0f172a'};
+  color: ${({ $variant }) => ($variant === 'primary' ? '#020617' : '#e2e8f0')};
   padding: 0.55rem 0.75rem;
   font-weight: 700;
   cursor: pointer;
