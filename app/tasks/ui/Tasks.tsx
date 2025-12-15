@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-import type { TStatus, TPriority } from './TasksClient';
-import type { TTaskDocument } from '@/lib/models/Task';
+import type { TStatus, TPriority, ITaskDTO } from '@/lib/types/taskTypes';
 
 interface ITasks {
   statusLabels: Record<TStatus, string>;
-  groupedByStatus: Record<TStatus, TTaskDocument[]>;
+  groupedByStatus: Record<TStatus, ITaskDTO[]>;
   priorityLabels: Record<TPriority, string>;
 }
 

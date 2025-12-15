@@ -24,7 +24,7 @@ const taskSchema = new mongoose.Schema(
   },
 );
 
-export type TTaskDocument = mongoose.InferSchemaType<typeof taskSchema> & {
+type TTaskDocument = mongoose.InferSchemaType<typeof taskSchema> & {
   _id: string;
 };
 

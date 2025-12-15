@@ -7,10 +7,7 @@ import Filters from './Filters';
 import Tasks from './Tasks';
 
 import type { ChangeEvent } from 'react';
-import type { TTaskDocument } from '@/lib/models/Task';
-
-export type TStatus = 'BACKLOG' | 'IN_PROGRESS' | 'DONE';
-export type TPriority = 'LOW' | 'MEDIUM' | 'HIGH';
+import type { TStatus, TPriority, ITaskDTO } from '@/lib/types/taskTypes';
 
 const statusLabels = {
   BACKLOG: 'Backlog',
@@ -24,7 +21,7 @@ const priorityLabels = {
   HIGH: 'High',
 };
 
-const TasksClient = ({ tasks }: { tasks: TTaskDocument[] }) => {
+const TasksClient = ({ tasks }: { tasks: ITaskDTO[] }) => {
   const [statusFilter, setStatusFilter] = useState<TStatus | 'ALL'>('ALL');
   const [priorityFilter, setPriorityFilter] = useState<TPriority | 'ALL'>(
     'ALL',
@@ -52,7 +49,7 @@ const TasksClient = ({ tasks }: { tasks: TTaskDocument[] }) => {
   }, [statusFilter, priorityFilter, search, tasks]);
 
   const groupedByStatus = useMemo(() => {
-    const groups: Record<TStatus, TTaskDocument[]> = {
+    const groups: Record<TStatus, ITaskDTO[]> = {
       BACKLOG: [],
       IN_PROGRESS: [],
       DONE: [],
