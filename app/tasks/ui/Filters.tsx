@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import type { ChangeEventHandler } from 'react';
-import type { TStatus, TPriority } from '../page';
+import type { TStatus, TPriority } from '@/lib/types/taskTypes';
 
 interface IFilters {
   statusFilter: TStatus | 'ALL';

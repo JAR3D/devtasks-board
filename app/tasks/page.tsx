@@ -19,7 +19,7 @@ const TasksPage = async () => {
     updatedAt: task.updatedAt ? new Date(task.updatedAt).toISOString() : null,
   }));
 
-  return <TasksClient tasks={safeTasks} />;
+  return <TasksClient initialTasks={safeTasks} />;
 };
 
 export default TasksPage;

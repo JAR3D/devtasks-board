@@ -6,9 +6,17 @@ interface ITasks {
   statusLabels: Record<TStatus, string>;
   groupedByStatus: Record<TStatus, ITaskDTO[]>;
   priorityLabels: Record<TPriority, string>;
+  onEdit: (task: ITaskDTO) => void;
+  onDelete: (task: ITaskDTO) => void;
 }
 
-const Tasks = ({ statusLabels, groupedByStatus, priorityLabels }: ITasks) => {
+const Tasks = ({
+  statusLabels,
+  groupedByStatus,
+  priorityLabels,
+  onEdit,
+  onDelete,
+}: ITasks) => {
   return (
     <Section>
       {(['BACKLOG', 'IN_PROGRESS', 'DONE'] as TStatus[]).map((status) => (
@@ -22,7 +30,13 @@ const Tasks = ({ statusLabels, groupedByStatus, priorityLabels }: ITasks) => {
               <Article key={task._id}>
                 <Header>
                   <H3>{task.title}</H3>
-                  <Span>{priorityLabels[task.priority]}</Span>
+                  <DivArticleHeader>
+                    <Span>{priorityLabels[task.priority]}</Span>
+                    <Button onClick={() => onEdit(task)}>Edit</Button>
+                    <Button danger onClick={() => onDelete(task)}>
+                      Delete
+                    </Button>
+                  </DivArticleHeader>
                 </Header>
 
                 {task.description && (
@@ -113,6 +127,26 @@ const Span = styled.span`
   text-transform: uppercase;
   letter-spacing: 0.025em;
   color: #cbd5e1;
+`;
+
+const DivArticleHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+`;
+
+const Button = styled.button<{ danger?: boolean }>`
+  border-radius: 0.4rem;
+  border: 1px solid ${({ danger }) => (danger ? '#ef4444' : '#334155')};
+  background: ${({ danger }) => (danger ? 'rgba(239,68,68,0.1)' : '#0f172a')};
+  color: ${({ danger }) => (danger ? '#fca5a5' : '#e2e8f0')};
+  padding: 0.25rem 0.45rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
 `;
 
 const PDescription = styled.p`
